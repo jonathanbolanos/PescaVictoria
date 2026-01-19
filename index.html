@@ -1,0 +1,946 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pesca Victoria | Tienda de Señuelos</title>
+  <meta name="description" content="Pesca Victoria - Tienda de señuelos y accesorios de pesca" />
+  <style>
+    :root{
+  --bg0:#070f16;
+  --bg1:#10161d;
+
+  --card:rgba(255,255,255,.075);
+  --border:rgba(255,255,255,.14);
+  --text:#eef2ff;
+  --muted:rgba(238,242,255,.72);
+
+  /* === COLORES DE TUS LOGOS/PORTADA === */
+  --g1:#2596ac; /* teal */
+  --g2:#8a9ea0; /* gris azulado */
+  --g3:#9bbcb6; /* teal claro */
+  --g4:#cad2d2; /* gris claro */
+  --g5:#10161d; /* oscuro */
+
+  --shadow: 0 18px 60px rgba(0,0,0,.55);
+  --radius: 18px;
+}
+
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 520px at 10% 12%, color-mix(in oklab, var(--g1) 24%, transparent), transparent 60%),
+        radial-gradient(900px 520px at 92% 10%, color-mix(in oklab, var(--g2) 24%, transparent), transparent 62%),
+        radial-gradient(1000px 560px at 50% 100%, color-mix(in oklab, var(--g3) 20%, transparent), transparent 65%),
+        linear-gradient(180deg, var(--bg1), var(--bg0));
+      overflow-x:hidden;
+    }
+
+    .wrap{max-width:1180px;margin:0 auto;padding:22px 16px 70px}
+
+    /* ====== TOP BAR ====== */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(180deg, rgba(10,12,18,.76), rgba(10,12,18,.38));
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar .inner{
+      max-width:1180px; margin:0 auto; padding:12px 16px;
+      display:flex; align-items:center; gap:12px; justify-content:space-between;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px; min-width:240px;
+    }
+    .brand .logo{
+      width:42px;height:42px;border-radius:12px;
+      background:linear-gradient(135deg,var(--g1),var(--g2),var(--g3));
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      overflow:hidden;
+      display:grid; place-items:center;
+      flex:0 0 auto;
+    }
+    .brand .logo img{width:100%;height:100%;object-fit:cover;display:block}
+    .brand .name{
+      display:flex; flex-direction:column; line-height:1.1;
+    }
+    .brand .name b{font-size:14px; letter-spacing:.4px}
+    .brand .name span{font-size:12px;color:var(--muted)}
+    .actions{display:flex; gap:10px; align-items:center}
+    .btn{
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:14px;
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      display:inline-flex; align-items:center; gap:8px;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); background:rgba(255,255,255,.09); border-color:rgba(255,255,255,.2)}
+    .btn.primary{
+      border:none;
+      background: linear-gradient(135deg, var(--g1), var(--g2), var(--g3));
+      box-shadow: 0 18px 45px rgba(0,0,0,.35);
+    }
+    .pill{
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.05);
+      color:var(--muted);
+      font-size:12px;
+      white-space:nowrap;
+    }
+
+    /* ====== HERO ====== */
+    .hero{
+      margin-top:18px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+      background:linear-gradient(90deg, rgba(7,15,22,.80), rgba(7,15,22,.35)), url("assets/pescasvictoriaportada.png");
+      background-size: cover;
+      background-position: center;
+
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:-80px;
+      background:
+        radial-gradient(320px 220px at 18% 24%, color-mix(in oklab, var(--g4) 36%, transparent), transparent 60%),
+        radial-gradient(360px 260px at 82% 22%, color-mix(in oklab, var(--g1) 36%, transparent), transparent 62%),
+        radial-gradient(380px 280px at 52% 88%, color-mix(in oklab, var(--g5) 28%, transparent), transparent 60%);
+      filter: blur(18px);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .hero .content{
+      position:relative;
+      padding:22px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
+      align-items:center;
+    }
+    @media (max-width:900px){
+      .hero .content{grid-template-columns:1fr}
+    }
+    h1{margin:0;font-size:40px;letter-spacing:.4px}
+    .tagline{color:var(--muted);font-size:15px; margin-top:8px; max-width:60ch}
+    .hero-cards{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+    }
+    @media (max-width:520px){
+      h1{font-size:32px}
+      .hero-cards{grid-template-columns:1fr}
+    }
+    .mini{
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:16px;
+      background:rgba(0,0,0,.18);
+      padding:12px;
+    }
+    .mini b{display:block;font-size:13px}
+    .mini span{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+
+    /* ====== LOGO STRIP ====== */
+    .logo-strip{
+      margin-top:14px;
+      display:flex; gap:10px; flex-wrap:wrap;
+      padding: 0 6px 12px;
+    }
+    .badge{
+      border:1px dashed rgba(255,255,255,.20);
+      background: rgba(255,255,255,.05);
+      border-radius: 14px;
+      padding: 10px 12px;
+      display:flex; align-items:center; gap:10px;
+    }
+    .badge img{
+      width:34px;height:34px;border-radius:10px;object-fit:cover;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.25);
+    }
+    .badge small{color:var(--muted)}
+
+    /* ====== SHOP LAYOUT ====== */
+    .shop{
+      margin-top:22px;
+      display:grid;
+      grid-template-columns: 320px 1fr;
+      gap:16px;
+    }
+    @media (max-width:980px){
+      .shop{grid-template-columns:1fr}
+    }
+
+    .panel{
+      border:1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.05);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .panel .head{
+      padding:14px 14px 10px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .panel .body{padding:14px}
+    .field{display:flex; flex-direction:column; gap:6px; margin-bottom:12px}
+    label{font-size:12px;color:var(--muted)}
+    input,select{
+      width:100%;
+      padding:11px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.22);
+      color:var(--text);
+      outline:none;
+    }
+    input::placeholder{color:rgba(238,242,255,.45)}
+    .chips{display:flex; gap:8px; flex-wrap:wrap}
+    .chip{
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      padding:8px 10px;
+      border-radius:999px;
+      cursor:pointer;
+      font-size:12px;
+      user-select:none;
+      transition: transform .12s ease, background .12s ease;
+    }
+    .chip:hover{transform: translateY(-1px); background:rgba(255,255,255,.08)}
+    .chip.active{
+      border:none;
+      background: linear-gradient(135deg, var(--g4), var(--g3), var(--g1));
+      color:#0a0b10;
+      font-weight:700;
+    }
+
+    /* ====== PRODUCT GRID ====== */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:14px;
+      padding:14px;
+    }
+    @media (max-width:1100px){ .grid{grid-template-columns: repeat(2, minmax(0,1fr));} }
+    @media (max-width:620px){ .grid{grid-template-columns: 1fr;} }
+
+    .card{
+      border:1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+      background: rgba(0,0,0,.16);
+      overflow:hidden;
+      box-shadow: 0 14px 45px rgba(0,0,0,.35);
+      display:flex; flex-direction:column;
+      min-height: 340px;
+    }
+    .thumb{
+      height:170px;
+      background:
+        radial-gradient(240px 180px at 30% 35%, color-mix(in oklab, var(--g1) 30%, transparent), transparent 62%),
+        radial-gradient(260px 200px at 80% 30%, color-mix(in oklab, var(--g2) 30%, transparent), transparent 60%),
+        radial-gradient(240px 180px at 55% 100%, color-mix(in oklab, var(--g3) 26%, transparent), transparent 62%),
+        linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-bottom:1px solid rgba(255,255,255,.10);
+      position:relative;
+    }
+    .thumb img{
+      position:absolute; inset:0;
+      width:100%;height:100%;object-fit:cover;
+      opacity:.9;
+    }
+    .thumb .type{
+      position:absolute; left:10px; top:10px;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      background: rgba(0,0,0,.45);
+      border:1px solid rgba(255,255,255,.14);
+      color: var(--text);
+      backdrop-filter: blur(10px);
+    }
+    .thumb .hot{
+      position:absolute; right:10px; top:10px;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      border:none;
+      background: linear-gradient(135deg, var(--g4), var(--g3));
+      color:#0a0b10;
+      font-weight:800;
+    }
+    .card .info{padding:12px 12px 14px; display:flex; flex-direction:column; gap:8px; flex:1}
+    .title{font-weight:800; letter-spacing:.2px}
+    .desc{font-size:13px;color:var(--muted);line-height:1.35}
+    .row{display:flex; align-items:center; justify-content:space-between; gap:10px}
+    .price{
+      font-size:18px;
+      font-weight:900;
+      background: linear-gradient(90deg, var(--g1), var(--g4), var(--g3));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .meta{display:flex; gap:8px; flex-wrap:wrap}
+    .tag{
+      font-size:12px;
+      color:rgba(238,242,255,.8);
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.05);
+      padding:6px 10px;
+      border-radius:999px;
+    }
+
+    /* ====== CART DRAWER ====== */
+    .drawer{
+      position:fixed; top:0; right:0; height:100%; width:380px;
+      max-width: 92vw;
+      background: rgba(10,12,18,.72);
+      backdrop-filter: blur(16px);
+      border-left: 1px solid rgba(255,255,255,.12);
+      box-shadow: -20px 0 70px rgba(0,0,0,.55);
+      transform: translateX(110%);
+      transition: transform .22s ease;
+      z-index: 80;
+      display:flex; flex-direction:column;
+    }
+    .drawer.open{transform: translateX(0)}
+    .drawer .dhead{
+      padding:14px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .drawer .dhead b{font-size:14px}
+    .drawer .dbody{padding:12px 14px; overflow:auto; flex:1}
+    .item{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      border-radius: 16px;
+      padding:10px;
+      display:grid;
+      grid-template-columns: 54px 1fr auto;
+      gap:10px;
+      margin-bottom:10px;
+      align-items:center;
+    }
+    .item .pimg{
+      width:54px;height:54px;border-radius:14px;
+      background: linear-gradient(135deg,var(--g2),var(--g1),var(--g3));
+      border:1px solid rgba(255,255,255,.12);
+      overflow:hidden;
+    }
+    .item .pimg img{width:100%;height:100%;object-fit:cover;display:block}
+    .item .ititle{font-weight:800; font-size:13px}
+    .item .isub{font-size:12px;color:var(--muted);margin-top:2px}
+    .qty{
+      display:flex; flex-direction:column; gap:6px; align-items:flex-end;
+    }
+    .qty .qrow{display:flex; gap:6px; align-items:center}
+    .qbtn{
+      width:32px;height:32px;border-radius:12px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.25);
+      color:var(--text);
+      cursor:pointer;
+    }
+    .qty .qnum{min-width:24px; text-align:center; font-weight:800}
+    .remove{
+      background:transparent;border:none;color:rgba(255,255,255,.7);
+      cursor:pointer;font-size:12px;text-decoration:underline;
+    }
+    .drawer .dfoot{
+      padding:14px;
+      border-top:1px solid rgba(255,255,255,.10);
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .total{
+      display:flex; justify-content:space-between; align-items:center;
+      font-weight:900;
+    }
+    .small{color:var(--muted); font-size:12px; line-height:1.35}
+    .overlay{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.55);
+      backdrop-filter: blur(3px);
+      opacity:0; pointer-events:none;
+      transition: opacity .2s ease;
+      z-index:70;
+    }
+    .overlay.show{opacity:1; pointer-events:auto}
+
+    /* ====== FOOTER ====== */
+    footer{
+      margin-top:22px;
+      color:rgba(238,242,255,.72);
+      font-size:12px;
+      text-align:center;
+    }
+    a.link{color:var(--text)}
+  </style>
+</head>
+
+<body>
+  <!-- ===== TOPBAR ===== -->
+  <div class="topbar">
+    <div class="inner">
+      <div class="brand">
+        <div class="logo" title="Logo principal">
+          <!-- Cambia esta ruta por tu logo -->
+          <img src="assets/pescavictorialogo.jpg" alt="Logo Pesca Victoria" onerror="this.remove()" />
+        </div>
+        <div class="name">
+          <b>Pesca Victoria</b>
+          <span>Tienda de señuelos y accesorios</span>
+        </div>
+      </div>
+
+      <div class="actions">
+        <span class="pill" id="statusPill">Envíos y entregas: consulta</span>
+        <button class="btn" id="btnIG" type="button">📸 Instagram</button>
+        <button class="btn" id="btnFB" type="button">📘 Facebook</button>
+        <button class="btn primary" id="btnCart" type="button">🛒 Carrito <span id="cartCount">(0)</span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="content">
+        <div>
+          <h1>Pesca Victoria</h1>
+          <div class="tagline">
+            Señuelos listos para la acción: <b>crankbaits</b>, <b>spinnerbaits</b>, <b>soft plastics</b>, <b>topwater</b>, <b>jigs</b> y más.
+            Filtra por tipo y arma tu combo. 🎣
+          </div>
+
+          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn primary" id="btnGoProducts" type="button">Ver señuelos</button>
+            <button class="btn" id="btnWhats" type="button">💬 Comprar por WhatsApp</button>
+          </div>
+
+          <!-- ===== STRIP DE LOGOS ===== -->
+          <div class="logo-strip" aria-label="Logos secundarios">
+            <div class="badge">
+              <img src="assets/logo-1.png" alt="Logo 1" onerror="this.style.display='none'">
+              <div>
+                <b style="font-size:12px">Calidad</b>
+                <small>para lobina y más</small>
+              </div>
+            </div>
+            <div class="badge">
+              <img src="assets/logo-2.png" alt="Logo 2" onerror="this.style.display='none'">
+              <div>
+                <b style="font-size:12px">Variedad</b>
+                <small>colores y acciones</small>
+              </div>
+            </div>
+            <div class="badge">
+              <img src="assets/logo-3.png" alt="Logo 3" onerror="this.style.display='none'">
+              <div>
+                <b style="font-size:12px">Accesorios</b>
+                <small>anzuelos, snaps, etc.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-cards">
+          <div class="mini">
+            <b>🔥 Paquetes y combos</b>
+            <span>Arma tu paquete por tipo de pesca.</span>
+          </div>
+          <div class="mini">
+            <b>⚡ Envíos / entregas</b>
+            <span>Define zona y método al pagar.</span>
+          </div>
+          <div class="mini">
+            <b>🎯 Para lobina</b>
+            <span>Acciones y tamaños recomendados.</span>
+          </div>
+          <div class="mini">
+            <b>🧾 Compra fácil</b>
+            <span>Carrito + WhatsApp para cerrar.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SHOP ===== -->
+    <section class="shop" id="shop">
+      <!-- FILTROS -->
+      <aside class="panel">
+        <div class="head">
+          <b>Filtros</b>
+          <button class="btn" id="btnReset" type="button">Reiniciar</button>
+        </div>
+        <div class="body">
+          <div class="field">
+            <label for="q">Buscar</label>
+            <input id="q" placeholder="Ej. crankbait 10 cm, topwater, jig..." />
+          </div>
+
+          <div class="field">
+            <label>Tipo de señuelo</label>
+            <div class="chips" id="chips"></div>
+          </div>
+
+          <div class="field">
+            <label for="sort">Ordenar</label>
+            <select id="sort">
+              <option value="featured">Destacados</option>
+              <option value="price_asc">Precio: menor a mayor</option>
+              <option value="price_desc">Precio: mayor a menor</option>
+              <option value="name_asc">Nombre A–Z</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="maxPrice">Precio máximo (MXN)</label>
+            <input id="maxPrice" type="number" min="0" step="10" placeholder="Ej. 400" />
+          </div>
+
+          <div class="small">
+            Tip: cambia los productos en el arreglo <b>PRODUCTS</b> (abajo en el código) y pon tus fotos en <b>assets/</b>.
+          </div>
+        </div>
+      </aside>
+
+      <!-- PRODUCTOS -->
+      <main class="panel">
+        <div class="head">
+          <b>Señuelos</b>
+          <span class="pill" id="resultsPill">0 productos</span>
+        </div>
+        <div class="grid" id="grid"></div>
+      </main>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Pesca Victoria · Catálogo web (demo).  
+      <br/>¿Quieres que lo deje igualito a tu perfil? Pásame <b>tu logo</b> y una <b>captura</b> de tu portada y lo ajusto.
+    </footer>
+  </div>
+
+  <!-- OVERLAY + CART -->
+  <div class="overlay" id="overlay"></div>
+  <aside class="drawer" id="drawer" aria-label="Carrito">
+    <div class="dhead">
+      <b>🛒 Tu carrito</b>
+      <button class="btn" id="btnClose" type="button">Cerrar</button>
+    </div>
+    <div class="dbody" id="cartList"></div>
+    <div class="dfoot">
+      <div class="total">
+        <span>Total</span>
+        <span id="total">$0</span>
+      </div>
+      <div class="small">
+        El botón de WhatsApp manda el pedido en texto para que tú confirmes: disponibilidad, envío/entrega y forma de pago.
+      </div>
+      <button class="btn primary" id="btnCheckout" type="button">💬 Finalizar por WhatsApp</button>
+      <button class="btn" id="btnClear" type="button">Vaciar carrito</button>
+    </div>
+  </aside>
+
+  <script>
+    /* =========================
+       CONFIG (CAMBIA AQUÍ)
+    ========================== */
+    const CONFIG = {
+      whatsappNumber: "5218340000000", // <-- CAMBIA: formato internacional. Ej: 5218343015563
+      facebookUrl: "https://www.facebook.com/pesca.victoria.1",
+      instagramUrl: "https://instagram.com/",
+      currency: "MXN",
+      pickupNote: "Ciudad Victoria, Tamaulipas",
+    };
+
+    /* =========================
+       PRODUCTOS (EDITA AQUÍ)
+       - image: pon tu foto en /assets/
+       - type: categoría para filtros
+    ========================== */
+    const PRODUCTS = [
+      {
+        id: "cb10",
+        name: "Crankbait 10 cm (Lobina)",
+        type: "Crankbait",
+        price: 199,
+        featured: true,
+        tags: ["10 cm", "14 g", "profundidad media"],
+        desc: "Acción agresiva para buscar lobina. Ideal en presas y ríos.",
+        image: "assets/crankbait-10cm.jpg"
+      },
+      {
+        id: "cb12",
+        name: "Crankbait 12 cm (Deep)",
+        type: "Crankbait",
+        price: 239,
+        featured: false,
+        tags: ["Deep", "anzuelo reforzado"],
+        desc: "Para trabajar zonas profundas y bordes.",
+        image: "assets/crankbait-deep.jpg"
+      },
+      {
+        id: "sp01",
+        name: "Spinnerbait Doble Hoja",
+        type: "Spinnerbait",
+        price: 179,
+        featured: true,
+        tags: ["vibración", "brillo"],
+        desc: "Excelente con agua tomada o con viento.",
+        image: "assets/spinnerbait.jpg"
+      },
+      {
+        id: "tw01",
+        name: "Topwater (Paseante)",
+        type: "Topwater",
+        price: 249,
+        featured: true,
+        tags: ["superficie", "walk the dog"],
+        desc: "Ataques explosivos al amanecer y atardecer.",
+        image: "assets/topwater.jpg"
+      },
+      {
+        id: "sf01",
+        name: "Soft Plastic (Lombriz 10 pzs)",
+        type: "Soft Plastics",
+        price: 120,
+        featured: false,
+        tags: ["10 pzs", "olor", "flexible"],
+        desc: "Para texas rig, wacky, o jig head.",
+        image: "assets/soft-plastic.jpg"
+      },
+      {
+        id: "jg01",
+        name: "Jig 3/8 oz (Antienganche)",
+        type: "Jigs",
+        price: 149,
+        featured: false,
+        tags: ["3/8 oz", "cover"],
+        desc: "Para pescar estructura: ramas, piedra, lirio.",
+        image: "assets/jig.jpg"
+      },
+      {
+        id: "ac01",
+        name: "Pack Accesorios (Snaps + Esmerillones)",
+        type: "Accesorios",
+        price: 99,
+        featured: false,
+        tags: ["resistente", "rápido"],
+        desc: "Cambia señuelos rápido y seguro.",
+        image: "assets/accesorios.jpg"
+      },
+      {
+        id: "hk01",
+        name: "Anzuelos Offset (10 pzs)",
+        type: "Accesorios",
+        price: 89,
+        featured: false,
+        tags: ["offset", "10 pzs"],
+        desc: "Perfectos para lombrices y criaturas.",
+        image: "assets/anzuelos.jpg"
+      }
+    ];
+
+    /* =========================
+       STATE + HELPERS
+    ========================== */
+    const $ = (q) => document.querySelector(q);
+    const grid = $("#grid");
+    const chips = $("#chips");
+    const resultsPill = $("#resultsPill");
+
+    const drawer = $("#drawer");
+    const overlay = $("#overlay");
+    const cartCount = $("#cartCount");
+    const cartList = $("#cartList");
+    const totalEl = $("#total");
+
+    const STORAGE_KEY = "pv_cart_v1";
+    let activeType = "Todos";
+    let cart = loadCart();
+
+    function money(n){
+      try{
+        return new Intl.NumberFormat("es-MX",{style:"currency",currency:CONFIG.currency}).format(n);
+      }catch(e){
+        return "$" + (Math.round(n*100)/100);
+      }
+    }
+
+    function loadCart(){
+      try{
+        return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+      }catch(e){
+        return {};
+      }
+    }
+    function saveCart(){
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+    }
+
+    function cartItems(){
+      return Object.entries(cart)
+        .map(([id, qty]) => {
+          const p = PRODUCTS.find(x => x.id === id);
+          return p ? { ...p, qty } : null;
+        })
+        .filter(Boolean);
+    }
+
+    function cartTotal(){
+      return cartItems().reduce((s,it)=> s + it.price*it.qty, 0);
+    }
+
+    function setCartCount(){
+      const count = Object.values(cart).reduce((a,b)=>a+b,0);
+      cartCount.textContent = `(${count})`;
+    }
+
+    /* =========================
+       FILTER UI
+    ========================== */
+    function buildChips(){
+      const types = ["Todos", ...new Set(PRODUCTS.map(p => p.type))];
+      chips.innerHTML = "";
+      types.forEach(t=>{
+        const el = document.createElement("div");
+        el.className = "chip" + (t===activeType ? " active" : "");
+        el.textContent = t;
+        el.onclick = ()=>{ activeType=t; syncUI(); };
+        chips.appendChild(el);
+      });
+    }
+
+    function applyFilters(list){
+      const q = ($("#q").value || "").trim().toLowerCase();
+      const maxPrice = parseFloat($("#maxPrice").value || "0");
+
+      let out = [...list];
+
+      if(activeType !== "Todos"){
+        out = out.filter(p => p.type === activeType);
+      }
+      if(q){
+        out = out.filter(p =>
+          (p.name + " " + p.desc + " " + (p.tags||[]).join(" ")).toLowerCase().includes(q)
+        );
+      }
+      if(maxPrice > 0){
+        out = out.filter(p => p.price <= maxPrice);
+      }
+
+      const sort = $("#sort").value;
+      if(sort === "price_asc") out.sort((a,b)=>a.price-b.price);
+      if(sort === "price_desc") out.sort((a,b)=>b.price-a.price);
+      if(sort === "name_asc") out.sort((a,b)=>a.name.localeCompare(b.name));
+      if(sort === "featured") out.sort((a,b)=> (b.featured===true) - (a.featured===true));
+
+      return out;
+    }
+
+    /* =========================
+       RENDER PRODUCTS
+    ========================== */
+    function renderProducts(){
+      const filtered = applyFilters(PRODUCTS);
+      resultsPill.textContent = `${filtered.length} producto${filtered.length===1?"":"s"}`;
+
+      grid.innerHTML = "";
+      filtered.forEach(p=>{
+        const card = document.createElement("article");
+        card.className = "card";
+        card.innerHTML = `
+          <div class="thumb">
+            <span class="type">${p.type}</span>
+            ${p.featured ? `<span class="hot">HOT</span>` : ``}
+            <img src="${p.image}" alt="${p.name}" onerror="this.remove()">
+          </div>
+          <div class="info">
+            <div class="title">${p.name}</div>
+            <div class="desc">${p.desc}</div>
+            <div class="meta">
+              ${(p.tags||[]).slice(0,4).map(t=>`<span class="tag">${t}</span>`).join("")}
+            </div>
+            <div class="row" style="margin-top:auto">
+              <div class="price">${money(p.price)}</div>
+              <button class="btn primary" type="button" data-add="${p.id}">Agregar</button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      grid.querySelectorAll("[data-add]").forEach(btn=>{
+        btn.addEventListener("click", ()=>{
+          const id = btn.getAttribute("data-add");
+          cart[id] = (cart[id]||0) + 1;
+          saveCart();
+          setCartCount();
+          renderCart();
+          openCart();
+        });
+      });
+    }
+
+    /* =========================
+       CART
+    ========================== */
+    function renderCart(){
+      const items = cartItems();
+      if(items.length === 0){
+        cartList.innerHTML = `<div class="small">Tu carrito está vacío. Agrega señuelos y aquí aparece tu pedido.</div>`;
+      }else{
+        cartList.innerHTML = "";
+        items.forEach(it=>{
+          const row = document.createElement("div");
+          row.className = "item";
+          row.innerHTML = `
+            <div class="pimg"><img src="${it.image}" alt="${it.name}" onerror="this.remove()"></div>
+            <div>
+              <div class="ititle">${it.name}</div>
+              <div class="isub">${money(it.price)} · ${it.type}</div>
+              <button class="remove" type="button" data-rm="${it.id}">Quitar</button>
+            </div>
+            <div class="qty">
+              <div class="qrow">
+                <button class="qbtn" type="button" data-dec="${it.id}">−</button>
+                <div class="qnum">${it.qty}</div>
+                <button class="qbtn" type="button" data-inc="${it.id}">+</button>
+              </div>
+              <div class="isub"><b>${money(it.price*it.qty)}</b></div>
+            </div>
+          `;
+          cartList.appendChild(row);
+        });
+      }
+
+      totalEl.textContent = money(cartTotal());
+
+      cartList.querySelectorAll("[data-inc]").forEach(b=>b.onclick=()=>{
+        const id=b.getAttribute("data-inc");
+        cart[id]=(cart[id]||0)+1; saveCart(); setCartCount(); renderCart();
+      });
+      cartList.querySelectorAll("[data-dec]").forEach(b=>b.onclick=()=>{
+        const id=b.getAttribute("data-dec");
+        cart[id]=(cart[id]||0)-1;
+        if(cart[id]<=0) delete cart[id];
+        saveCart(); setCartCount(); renderCart();
+      });
+      cartList.querySelectorAll("[data-rm]").forEach(b=>b.onclick=()=>{
+        const id=b.getAttribute("data-rm");
+        delete cart[id];
+        saveCart(); setCartCount(); renderCart();
+      });
+    }
+
+    function openCart(){
+      drawer.classList.add("open");
+      overlay.classList.add("show");
+    }
+    function closeCart(){
+      drawer.classList.remove("open");
+      overlay.classList.remove("show");
+    }
+
+    function buildWhatsAppMessage(){
+      const items = cartItems();
+      const lines = [];
+      lines.push("Hola, quiero hacer un pedido en Pesca Victoria 🎣");
+      lines.push("");
+      items.forEach(it=>{
+        lines.push(`• ${it.qty} x ${it.name} (${it.type}) — ${money(it.price)} c/u`);
+      });
+      lines.push("");
+      lines.push(`Total aprox: ${money(cartTotal())}`);
+      lines.push(`Lugar/nota: ${CONFIG.pickupNote}`);
+      lines.push("");
+      lines.push("¿Me confirmas disponibilidad, envío/entrega y forma de pago?");
+
+      return lines.join("\n");
+    }
+
+    function goWhatsApp(){
+      const items = cartItems();
+      if(items.length===0){
+        alert("Tu carrito está vacío. Agrega productos primero 🙂");
+        return;
+      }
+      const text = encodeURIComponent(buildWhatsAppMessage());
+      const url = `https://wa.me/${CONFIG.whatsappNumber}?text=${text}`;
+      window.open(url, "_blank");
+    }
+
+    /* =========================
+       EVENTS
+    ========================== */
+    $("#btnCart").onclick = ()=>{ renderCart(); openCart(); };
+    $("#btnClose").onclick = closeCart;
+    overlay.onclick = closeCart;
+
+    $("#btnCheckout").onclick = goWhatsApp;
+    $("#btnWhats").onclick = ()=>{ renderCart(); openCart(); };
+
+    $("#btnClear").onclick = ()=>{
+      if(confirm("¿Vaciar carrito?")){
+        cart = {};
+        saveCart();
+        setCartCount();
+        renderCart();
+      }
+    };
+
+    $("#btnReset").onclick = ()=>{
+      activeType="Todos";
+      $("#q").value="";
+      $("#maxPrice").value="";
+      $("#sort").value="featured";
+      syncUI();
+    };
+
+    $("#btnGoProducts").onclick = ()=>{
+      document.getElementById("shop").scrollIntoView({behavior:"smooth"});
+    };
+
+    $("#btnFB").onclick = ()=> window.open(CONFIG.facebookUrl, "_blank");
+    $("#btnIG").onclick = ()=> window.open(CONFIG.instagramUrl, "_blank");
+
+    ["#q","#maxPrice","#sort"].forEach(sel=>{
+      $(sel).addEventListener("input", ()=> renderProducts());
+      $(sel).addEventListener("change", ()=> renderProducts());
+    });
+
+    function syncUI(){
+      buildChips();
+      renderProducts();
+    }
+
+    /* =========================
+       INIT
+    ========================== */
+    document.getElementById("year").textContent = new Date().getFullYear();
+    $("#statusPill").textContent = `📍 ${CONFIG.pickupNote}`;
+    setCartCount();
+    syncUI();
+  </script>
+</body>
+</html>
