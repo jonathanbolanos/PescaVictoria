@@ -7,25 +7,24 @@
   <meta name="description" content="Pesca Victoria - Tienda de señuelos y accesorios de pesca" />
   <style>
     :root{
-  --bg0:#070f16;
-  --bg1:#10161d;
+      --bg0:#070f16;
+      --bg1:#10161d;
 
-  --card:rgba(255,255,255,.075);
-  --border:rgba(255,255,255,.14);
-  --text:#eef2ff;
-  --muted:rgba(238,242,255,.72);
+      --card:rgba(255,255,255,.075);
+      --border:rgba(255,255,255,.14);
+      --text:#eef2ff;
+      --muted:rgba(238,242,255,.72);
 
-  /* === COLORES DE TUS LOGOS/PORTADA === */
-  --g1:#2596ac; /* teal */
-  --g2:#8a9ea0; /* gris azulado */
-  --g3:#9bbcb6; /* teal claro */
-  --g4:#cad2d2; /* gris claro */
-  --g5:#10161d; /* oscuro */
+      /* === PALETA BASADA EN TUS LOGOS/PORTADA === */
+      --g1:#2596ac; /* teal */
+      --g2:#8a9ea0; /* gris azulado */
+      --g3:#9bbcb6; /* teal claro */
+      --g4:#cad2d2; /* gris claro */
+      --g5:#10161d; /* oscuro */
 
-  --shadow: 0 18px 60px rgba(0,0,0,.55);
-  --radius: 18px;
-}
-
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --radius: 18px;
+    }
 
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -83,12 +82,15 @@
       transition: transform .12s ease, background .12s ease, border-color .12s ease;
       display:inline-flex; align-items:center; gap:8px;
       user-select:none;
+      white-space:nowrap;
     }
     .btn:hover{transform: translateY(-1px); background:rgba(255,255,255,.09); border-color:rgba(255,255,255,.2)}
     .btn.primary{
       border:none;
       background: linear-gradient(135deg, var(--g1), var(--g2), var(--g3));
       box-shadow: 0 18px 45px rgba(0,0,0,.35);
+      color:#061015;
+      font-weight:800;
     }
     .pill{
       padding:6px 10px;
@@ -105,14 +107,16 @@
       margin-top:18px;
       border:1px solid rgba(255,255,255,.12);
       border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
       box-shadow: var(--shadow);
       overflow:hidden;
       position:relative;
-      background:linear-gradient(90deg, rgba(7,15,22,.80), rgba(7,15,22,.35)), url("assets/pescasvictoriaportada.png");
+
+      /* Portada */
+      background:
+        linear-gradient(90deg, rgba(7,15,22,.82), rgba(7,15,22,.35)),
+        url("assets/pescasvictoriaportada.png");
       background-size: cover;
       background-position: center;
-
     }
     .hero::before{
       content:"";
@@ -122,7 +126,7 @@
         radial-gradient(360px 260px at 82% 22%, color-mix(in oklab, var(--g1) 36%, transparent), transparent 62%),
         radial-gradient(380px 280px at 52% 88%, color-mix(in oklab, var(--g5) 28%, transparent), transparent 60%);
       filter: blur(18px);
-      opacity:.9;
+      opacity:.75;
       pointer-events:none;
     }
     .hero .content{
@@ -230,7 +234,7 @@
       border:none;
       background: linear-gradient(135deg, var(--g4), var(--g3), var(--g1));
       color:#0a0b10;
-      font-weight:700;
+      font-weight:800;
     }
 
     /* ====== PRODUCT GRID ====== */
@@ -265,7 +269,7 @@
     .thumb img{
       position:absolute; inset:0;
       width:100%;height:100%;object-fit:cover;
-      opacity:.9;
+      opacity:.92;
     }
     .thumb .type{
       position:absolute; left:10px; top:10px;
@@ -285,7 +289,7 @@
       border:none;
       background: linear-gradient(135deg, var(--g4), var(--g3));
       color:#0a0b10;
-      font-weight:800;
+      font-weight:900;
     }
     .card .info{padding:12px 12px 14px; display:flex; flex-direction:column; gap:8px; flex:1}
     .title{font-weight:800; letter-spacing:.2px}
@@ -394,6 +398,57 @@
       text-align:center;
     }
     a.link{color:var(--text)}
+
+    /* =========================
+       MEJORAS PARA CELULAR
+       (NO AFECTA EN PC)
+    ========================== */
+    @media (max-width: 768px){
+      .hero{
+        min-height: 55vh;
+        background-position: center top;
+      }
+      .btn{
+        padding: 14px 16px;
+        font-size: 16px;
+        border-radius: 16px;
+      }
+      .grid{
+        grid-template-columns: 1fr !important;
+      }
+      .topbar .inner{
+        gap:10px;
+        flex-wrap:wrap;
+      }
+      .actions{
+        width:100%;
+        justify-content:space-between;
+        gap:8px;
+        flex-wrap:wrap;
+      }
+      .pill{flex:1}
+    }
+
+    /* ====== BOTÓN FLOTANTE WHATSAPP ====== */
+    .whatsapp-float{
+      position: fixed;
+      bottom: 18px;
+      right: 18px;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      text-decoration: none;
+      box-shadow: 0 12px 30px rgba(0,0,0,.4);
+      z-index: 999;
+      transition: transform .12s ease;
+    }
+    .whatsapp-float:hover{ transform: scale(1.05); }
   </style>
 </head>
 
@@ -403,7 +458,6 @@
     <div class="inner">
       <div class="brand">
         <div class="logo" title="Logo principal">
-          <!-- Cambia esta ruta por tu logo -->
           <img src="assets/pescavictorialogo.jpg" alt="Logo Pesca Victoria" onerror="this.remove()" />
         </div>
         <div class="name">
@@ -519,7 +573,7 @@
           </div>
 
           <div class="small">
-            Tip: cambia los productos en el arreglo <b>PRODUCTS</b> (abajo en el código) y pon tus fotos en <b>assets/</b>.
+            Tip: cambia los productos en el arreglo <b>PRODUCTS</b> (abajo) y pon tus fotos en <b>assets/</b>.
           </div>
         </div>
       </aside>
@@ -535,8 +589,7 @@
     </section>
 
     <footer>
-      © <span id="year"></span> Pesca Victoria · Catálogo web (demo).  
-      <br/>¿Quieres que lo deje igualito a tu perfil? Pásame <b>tu logo</b> y una <b>captura</b> de tu portada y lo ajusto.
+      © <span id="year"></span> Pesca Victoria · Catálogo web (demo).
     </footer>
   </div>
 
@@ -545,6 +598,7 @@
   <aside class="drawer" id="drawer" aria-label="Carrito">
     <div class="dhead">
       <b>🛒 Tu carrito</b>
+      <remember></remember>
       <button class="btn" id="btnClose" type="button">Cerrar</button>
     </div>
     <div class="dbody" id="cartList"></div>
@@ -561,23 +615,18 @@
     </div>
   </aside>
 
+  <!-- BOTÓN FLOTANTE -->
+  <a href="#" class="whatsapp-float" id="waFloat" target="_blank" aria-label="WhatsApp">💬</a>
+
   <script>
-    /* =========================
-       CONFIG (CAMBIA AQUÍ)
-    ========================== */
     const CONFIG = {
-      whatsappNumber: "5218343015563", // <-- CAMBIA: formato internacional. Ej: 5218343015563
+      whatsappNumber: "5218343015563", // México +52 y celular 1
       facebookUrl: "https://www.facebook.com/pesca.victoria.1",
       instagramUrl: "https://instagram.com/",
       currency: "MXN",
       pickupNote: "Ciudad Victoria, Tamaulipas",
     };
 
-    /* =========================
-       PRODUCTOS (EDITA AQUÍ)
-       - image: pon tu foto en /assets/
-       - type: categoría para filtros
-    ========================== */
     const PRODUCTS = [
       {
         id: "cb10",
@@ -661,9 +710,6 @@
       }
     ];
 
-    /* =========================
-       STATE + HELPERS
-    ========================== */
     const $ = (q) => document.querySelector(q);
     const grid = $("#grid");
     const chips = $("#chips");
@@ -716,9 +762,6 @@
       cartCount.textContent = `(${count})`;
     }
 
-    /* =========================
-       FILTER UI
-    ========================== */
     function buildChips(){
       const types = ["Todos", ...new Set(PRODUCTS.map(p => p.type))];
       chips.innerHTML = "";
@@ -758,9 +801,6 @@
       return out;
     }
 
-    /* =========================
-       RENDER PRODUCTS
-    ========================== */
     function renderProducts(){
       const filtered = applyFilters(PRODUCTS);
       resultsPill.textContent = `${filtered.length} producto${filtered.length===1?"":"s"}`;
@@ -802,9 +842,6 @@
       });
     }
 
-    /* =========================
-       CART
-    ========================== */
     function renderCart(){
       const items = cartItems();
       if(items.length === 0){
@@ -875,7 +912,6 @@
       lines.push(`Lugar/nota: ${CONFIG.pickupNote}`);
       lines.push("");
       lines.push("¿Me confirmas disponibilidad, envío/entrega y forma de pago?");
-
       return lines.join("\n");
     }
 
@@ -890,9 +926,17 @@
       window.open(url, "_blank");
     }
 
-    /* =========================
-       EVENTS
-    ========================== */
+    // Botón flotante WhatsApp: manda el pedido si hay carrito, si no abre chat normal
+    function waFloatClick(){
+      const items = cartItems();
+      if(items.length===0){
+        const url = `https://wa.me/${CONFIG.whatsappNumber}`;
+        window.open(url, "_blank");
+        return;
+      }
+      goWhatsApp();
+    }
+
     $("#btnCart").onclick = ()=>{ renderCart(); openCart(); };
     $("#btnClose").onclick = closeCart;
     overlay.onclick = closeCart;
@@ -934,11 +978,10 @@
       renderProducts();
     }
 
-    /* =========================
-       INIT
-    ========================== */
     document.getElementById("year").textContent = new Date().getFullYear();
     $("#statusPill").textContent = `📍 ${CONFIG.pickupNote}`;
+    $("#waFloat").addEventListener("click", (e)=>{ e.preventDefault(); waFloatClick(); });
+
     setCartCount();
     syncUI();
   </script>
